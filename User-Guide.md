@@ -52,24 +52,7 @@ Packs an **ASP program zip** together with the built-in **aspfox mini ASP server
 - Public access needs port forwarding on your router; 360 / Huorong / PC Manager-style security suites have their own firewall and need the program allowed separately.
 - `.mdb` and files starting with `data` are not directly downloadable (403) by default, but remain visible and read/writable for the program on disk.
 
-## 5. Rebuild from source
-Pure C + Win32 (no third-party libraries; even raw DEFLATE decompression is built in). Cross-compile on Linux with mingw-w64:
-
-```bash
-# 1) Server shell (embedded by the packer)
-i686-w64-mingw32-windres aspfox.rc aspfox_res.o
-i686-w64-mingw32-gcc -mwindows -Os -s -fexec-charset=UTF-8 main.c aspfox_res.o \
-  -o server_shell.exe -lws2_32 -lole32 -loleaut32 -luuid -lshell32 -lcomctl32
-
-# 2) Packer (needs server_shell.exe, embedded as RCDATA)
-i686-w64-mingw32-windres packer.rc packer_res.o
-i686-w64-mingw32-gcc -mwindows -Os -s -fexec-charset=UTF-8 packer.c packer_res.o \
-  -o Packer.exe -lws2_32 -lole32 -loleaut32 -luuid -lshell32 -lcomdlg32
-```
-
-> One-shot scripts are included: `bash build.sh` (server shell), `bash build_packer.sh` (packer).
-
-## 6. Known limitations
+## 5. Known limitations
 - Both the packer and the packed exe run on **Windows** only; the build environment here has no Windows, so **no real-machine run test was performed** — please verify double-click and LAN access on the target machine.
 - Prefer ASCII / UTF-8 file names inside the zip; file dialogs are Unicode, very old ANSI paths may misbehave.
 - The embedded app.zip is stored uncompressed (invisible but not encrypted).
