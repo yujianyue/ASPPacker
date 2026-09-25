@@ -1,4 +1,12 @@
 # ASPPacker
+将asp源码打包为exe单文件web服务器含源码(加密进exe),零依赖(极小体积),免安装,双击运行,删除即卸载。Asp程序复兴者。
 Package ASP source code into a single-file EXE web server, with the source code encrypted into the EXE. Zero dependencies (extremely small size), no installation required, double-click to run, and delete it to uninstall.
 
-将asp源码打包为exe单文件web服务器含源码(加密进exe),零依赖(极小体积),免安装,双击运行,删除即卸载。Asp程序复兴者。
+> ASP 单文件 EXE 通用打包器可把一个 ASP 程序与内置的迷你 ASP 服务器打包成一个独立 EXE：双击即用，无需 IIS、无需安装、无需配置，本机或局域网内通过 IP 加端口即可访问，也支持公网部署。程序代码内嵌于 EXE 内部，日常运行不落盘、不散落文件；Access 数据库借助系统自带组件开箱即用，VBScript/JScript、Session/Application、global.asa 与 #include 等常见 ASP 特性均在支持之列。打包时可自定义动态数据目录与缓存后缀，让需要读写的数据落在磁盘上便于现场维护，其余内容全部留在文件中；配合崩溃自诊断与体积自检，可快速定位问题。适合将工资查询、内部台账等 Access + ASP 老系统，以最轻的方式分发到任意 Windows 电脑上使用（32 位，Windows 7 及以上）。
+
+> The ASP Single-File EXE Packer turns an ASP program plus a built-in mini ASP server into one standalone EXE: double-click and it just works — no IIS, no installation, no configuration. Users reach it over local or LAN IP and port, and public deployment is supported as well. Your pages are embedded inside the EXE, so nothing is scattered onto disk during normal operation, while Access databases work out of the box through built-in system components; common ASP features such as VBScript/JScript, Session/Application, global.asa and `#include` are all supported. At packing time you define which data folders and cache extensions are extracted to disk for read/write maintenance, keeping everything else inside the file, and built-in crash diagnostics plus a size self-check make problems easy to spot. It is a lightweight way to distribute legacy Access + ASP systems — payroll lookups, internal ledgers and similar tools — to any Windows PC (32-bit, Windows 7 or later).
+
+> 安全提醒：单文件 EXE 仅为方便分发，其本身不提供源码与数据的保护能力——程序内容仍存在被提取和查看的可能。请勿在页面代码中硬编码数据库口令、加密密钥、接口凭据等敏感信息，也不要把敏感数据（工资、身份证号等）的可控性寄托于打包形态。发布前请自行完成凭据外置、访问控制与必要的安全加固，并默认假设：能够拿到该文件、或能够访问到运行中服务的人员，均有获取其中源码与数据的可能。
+
+> Security notice: the single-file EXE is a distribution convenience only — it does not protect your source code or data, and the embedded content may still be extracted or viewed. Never hard-code database passwords, encryption keys, API credentials or other secrets in your pages, and never rely on the packaged form to safeguard sensitive data such as salaries or ID numbers. Before release, move credentials out of your code, apply proper access control and the recommended hardening steps, and assume by default that anyone who obtains this file — or can reach the running service — may be able to recover both source code and data.
+
